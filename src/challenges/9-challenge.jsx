@@ -21,19 +21,23 @@ function App() {
   }, []);
 
   return (
-    <div style={{margin: '10px auto', width: '250px'}}>
+    <div style={{ margin: "10px auto", width: "250px" }}>
       <input value={userInput} onChange={(e) => setUserInput(e.target.value)} />
       {!isLoaded && <p>Loading...</p>}
-      <ul style={{listStyle: 'none'}}>
+      <ul style={{ listStyle: "none" }}>
         {isLoaded &&
           users.map((personObj, index) => {
             // console.log(personObj)
-            const nameObj = personObj.name
+            const nameObj = personObj.name;
             // console.log(nameObj)
             const fullName = nameObj.title + nameObj.first + nameObj.last;
             // console.log(fullName)
             if (fullName.toLowerCase().includes(userInput.toLowerCase())) {
-              return (<li key={'person_' + index}>{`${nameObj.title} ${nameObj.first} ${nameObj.last}`}</li>);
+              return (
+                <li
+                  key={"person_" + index}
+                >{`${nameObj.title} ${nameObj.first} ${nameObj.last}`}</li>
+              );
             }
           })}
       </ul>

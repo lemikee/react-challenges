@@ -63,7 +63,7 @@ const Quiz = ({ questions }) => {
 
   return (
     <div>
-      { currentQuestionIndex < questions.length &&
+      {currentQuestionIndex < questions.length && (
         <div>
           <h3>{questions[currentQuestionIndex].question}</h3>
           <ol>
@@ -74,94 +74,15 @@ const Quiz = ({ questions }) => {
             ))}
           </ol>
         </div>
-      }
-      { currentQuestionIndex >= questions.length && <p onClick={() => setCurrentQuestionIndex(0)}>Your Score: {(score / questions.length) * 100}% <br />Click to try again!</p>}
+      )}
+      {currentQuestionIndex >= questions.length && (
+        <p onClick={() => setCurrentQuestionIndex(0)}>
+          Your Score: {(score / questions.length) * 100}% <br />
+          Click to try again!
+        </p>
+      )}
     </div>
   );
 };
 
 export default App;
-
-// function App() {
-//   return <Quiz questions={QUESTIONS} />;
-// }
-
-// const Quiz = ({ questions }) => {
-//   const [score, setScore] = useState(0);
-//   const [currentQuestion, setCurrentQuestion] = useState(0);
-
-//   const handleAnswer = (currentQuestion, index) => {
-//     if (questions[currentQuestion].correct == index) {
-//       setScore(score + 1);
-//     }
-//     setCurrentQuestion(currentQuestion + 1);
-//   };
-
-//   return (
-//     <div style={{ margin: "auto", width: "30%" }}>
-//       {currentQuestion < questions.length && (
-//         <>
-//           <h3>{questions[currentQuestion].question}</h3>
-//           {questions[currentQuestion].answers.map((answer, index) => (
-//             <p key={index }onClick={() => handleAnswer(currentQuestion, index)}>{answer}</p>
-//           ))}
-//         </>
-//       )}
-//       {currentQuestion >= questions.length && (
-//         <p>{`You scored ${(score / questions.length) * 100}%`}</p>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default App;
-
-// function App() {
-//   return <Quiz questions={QUESTIONS} />;
-// }
-
-// const Quiz = ({ questions }) => {
-//   const [score, setScore] = useState(0);
-//   const [questionIndex, setQuestionIndex] = useState(0);
-
-//   const nextQuestion = (answerIndex) => {
-//     if (questions[questionIndex]["correct"] === answerIndex)
-//       setScore(score + 1);
-//     setQuestionIndex(questionIndex + 1);
-//   };
-
-//   const reset = () => {
-//     setScore(0);
-//     setQuestionIndex(0)
-//   };
-
-//   const currentQuestion = questions[questionIndex];
-
-//   return (
-//     <div>
-//       <p>Welcome your Quiz!</p>
-//       {questions[questionIndex] ? (
-//         <Question question={currentQuestion} nextQuestion={nextQuestion} />
-//       ) : (
-//         <p>Your score is {Math.floor((score / questions.length) * 100)}% <br /> <b onClick={reset}>Click here to try again!</b></p>
-//       )}
-//     </div>
-//   );
-// };
-
-// const Question = ({ question, nextQuestion }) => {
-//   return (
-//     <div>
-//       <p>{question["question"]}</p>
-//       <ul>
-//         {question["answers"].map((answer, index) => (
-//           <li key={index} onClick={() => nextQuestion(index)}>
-//             {answer}
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default App;

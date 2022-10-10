@@ -12,20 +12,18 @@ const GenerateList = () => {
   const [button, setButton] = useState(false);
 
   const getActivity = async () => {
-    setButton(true)
+    setButton(true);
     let response = await fetch("http://www.boredapi.com/api/activity");
-    let activity = await response.json()
-    setActivites([...activites, activity])
-    setButton(false)
+    let activity = await response.json();
+    setActivites([...activites, activity]);
+    setButton(false);
   };
 
   useEffect(() => {
-    setIsLoaded(false)
-    getActivity()
-    setIsLoaded(true)
-  }, [])
-
-//  for async, isLoaded/disable button so not multiple requests
+    setIsLoaded(false);
+    getActivity();
+    setIsLoaded(true);
+  }, []);
 
   return (
     <div style={{ width: "50%", margin: "10px auto" }}>
@@ -33,7 +31,9 @@ const GenerateList = () => {
         Generate New Activity
       </button>
       <ul>
-        {activites.map((item, index) => <ExpandableListItem item={item} key={'item_' + index}/>)}
+        {activites.map((item, index) => (
+          <ExpandableListItem item={item} key={"item_" + index} />
+        ))}
       </ul>
     </div>
   );
@@ -41,11 +41,11 @@ const GenerateList = () => {
 
 const ExpandableListItem = ({ item }) => {
   // YOUR CODE HERE
-  const [ display, setDisplay ] = useState(true);
+  const [display, setDisplay] = useState(true);
 
   return (
     <div>
-      <div style={{display: 'inline'}}>
+      <div style={{ display: "inline" }}>
         <p>{item.activity}</p>
         <button onClick={() => setDisplay(!display)}>
           {display ? "Collpase" : "Expand"}
@@ -67,27 +67,6 @@ const ExpandableListItem = ({ item }) => {
 };
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // function App() {
 //   return <GenerateList />;
